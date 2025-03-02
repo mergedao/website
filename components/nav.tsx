@@ -18,7 +18,7 @@ const Brand: FC = () => (
 
 const Links: FC<{ blog: Blog }> = ({ blog }) => {
   const links = Object.entries({
-    "MCP文档": "/services/mcp-docs",
+    "MCP文档": "https://mcp.vyagent.com/introduction",
     "MCP商店": "/services/mcp-store",
     "服务托管": "/services/mcp-hosting",
     "SaaS服务": "/services/saas",

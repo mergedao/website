@@ -10,7 +10,14 @@ import * as api from "../lib/api";
 
 export default function Home({ app }) {
   return (
-    <Layout blog={app.blog}>
+    <Layout
+      seo={{
+        title: '纬曜智能 - 专业MCP人工智能解决方案提供商',
+        description: '纬曜智能通过MCP协议，帮助企业轻松接入和管理各种AI能力，包括模型商店和服务托管。',
+        keywords: 'MCP, 人工智能, AI模型, 企业AI解决方案, 智能服务'
+      }}
+      blog={app.blog}
+    >
       <div className="tk-landing">
         <Hero />
         <Logos />

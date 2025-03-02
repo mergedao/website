@@ -24,7 +24,7 @@ const STACK_LAYERS: StackLayer[] = [
     name: "协议文档库",
     desc: "我们提供专业的MCP协议文档维护服务，确保您始终掌握最新的接口规范和最佳实践。",
     zIndex: 3,
-    href: "/services/mcp-docs",
+    href: "https://mcp.vyagent.com/introduction",
   },
   {
     id: 'hyper',
