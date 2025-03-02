@@ -74,7 +74,14 @@ export default function Footer() {
           </div>
           <div className="column is-half">
             <div className="columns is-multiline is-mobile tk-footer-libs">
-              {libs}
+              {libs.map((lib) => (
+                <div key={lib.name} className="column is-half">
+                  <a href={lib.href} className="tk-lib">
+                    <span className="tk-lib-name">{lib.name}</span>
+                    <span className="tk-lib-desc">{lib.desc}</span>
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>
