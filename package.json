@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && npm run build:rss",
-    "build:rss": "tsc --outDir dist --noEmit false && sed -i.bak 's/markdown\"/markdown.js\"/g' dist/lib/api.js && rm dist/lib/api.js.bak && node scripts/generate-rss-feed.js",
+    "build": "next build",
+    "start": "next start",
     "fmt": "prettier --write --prose-wrap always '{components,content,pages,lib,styles}/**/*.{js,jsx,ts,tsx,scss}'",
     "fmt:check": "prettier --check --prose-wrap always '{components,content,pages,lib,styles}/**/*.{js,jsx,ts,tsx,scss}'"
   },
