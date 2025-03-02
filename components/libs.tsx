@@ -10,29 +10,27 @@ type Library = {
 const LIBS: Library[] = [
   {
     id: "runtime",
-    name: "Reliable",
-    desc: "Tokio's APIs are memory-safe, thread-safe, and misuse-resistant. This helps prevent common bugs, such as unbounded queues, buffer overflows, and task starvation.",
+    name: "可靠性",
+    desc: "纬曜智能的MCP平台采用高可用架构设计，确保服务稳定可靠，即使在高负载情况下也能保持出色的性能和响应速度。",
   },
   {
     id: "hyper",
-    name: "Fast",
-    desc: "Building on top of Rust, Tokio provides a multi-threaded, work-stealing scheduler. Applications can process hundreds of thousands of requests per second with minimal overhead.",
+    name: "高性能",
+    desc: "基于先进的分布式技术，我们的平台能够处理海量请求，支持大规模并发访问，为您的AI应用提供强大的算力支持。",
   },
   {
     id: "tonic",
-    name: "Easy",
+    name: "易用性",
     desc: (
       <>
-        <code>async</code>/<code>await</code> reduces the complexity of writing
-        asynchronous applications. Paired with Tokio's utilities and vibrant
-        ecosystem, writing applications is a breeze.
+        简洁直观的<code>API</code>设计和完善的<code>SDK</code>支持，让您能够轻松集成我们的服务，快速构建智能应用，无需深入了解复杂的底层技术。
       </>
     ),
   },
   {
     id: "tower",
-    name: "Flexible",
-    desc: "The needs of a server application differ from that of an embedded device. Although Tokio comes with defaults that work well out of the box, it also provides the knobs needed to fine tune to different cases.",
+    name: "灵活性",
+    desc: "我们的MCP平台提供丰富的配置选项和自定义能力，可以根据不同的业务需求进行灵活调整，从小型应用到企业级解决方案都能完美适配。",
   },
 ];
 
@@ -57,7 +55,7 @@ const Lib: FC<{ lib: Library }> = ({ lib }) => (
           <h2 className="subtitle">{lib.desc}</h2>
         </div>
         {/* <p className="learn-more has-text-right">
-          <a href="#">Learn more ➔</a>
+          <a href="#">了解更多 ➔</a>
         </p> */}
       </div>
     </div>

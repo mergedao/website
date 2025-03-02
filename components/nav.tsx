@@ -18,9 +18,11 @@ const Brand: FC = () => (
 
 const Links: FC<{ blog: Blog }> = ({ blog }) => {
   const links = Object.entries({
-    Learn: "/tokio/tutorial",
-    "API Docs": "https://docs.rs/tokio",
-    Blog: blog.href,
+    "MCP文档": "/services/mcp-docs",
+    "MCP商店": "/services/mcp-store",
+    "服务托管": "/services/mcp-hosting",
+    "SaaS服务": "/services/saas",
+    "博客": blog.href,
   }).map(([name, href]) => (
     <a key={name} href={href} className="navbar-item navbar-text">
       {name}

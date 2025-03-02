@@ -68,3 +68,26 @@ cargo test --all
 ```
 The doc tests verify that all code blocks are valid Rust, and the tutorial-code folder
 contains the full code examples from the tutorial.
+
+---
+date: "2024-06-10"
+title: "MCP协议完全指南"
+description: "2024年6月10日"
+---
+
+MCP(Model Cloud Platform)协议是连接AI模型和应用的桥梁。本文将为您详细介绍MCP协议的基本概念、核心组件和最佳实践。
+
+## 什么是MCP协议
+
+MCP协议是一套标准化的接口规范，用于定义AI模型服务的调用方式、参数传递、结果返回等交互环节。通过统一的协议，开发者可以轻松接入不同的AI模型，而无需关心底层实现细节。
+
+## MCP协议的核心组件
+
+- **模型定义**：描述模型的基本信息、输入输出格式等。
+- **调用接口**：标准化的API调用方式，包括同步调用和异步调用。
+- **状态管理**：模型运行状态的监控和管理机制。
+- **安全认证**：确保模型调用的安全性和合法性。
+
+## 如何使用MCP协议
+
+本文将通过一个简单的示例，展示如何使用MCP协议调用一个图像识别模型...

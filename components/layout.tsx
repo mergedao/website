@@ -17,7 +17,7 @@ type Props = {
 };
 
 function pageTitle(title: string | undefined): string {
-  const name = "Tokio - An asynchronous Rust runtime";
+  const name = "纬曜智能 - 专业的MCP人工智能解决方案";
   return title ? `${title} | ${name}` : name;
 }
 
@@ -28,7 +28,7 @@ const Layout: FC<Props> = ({ title, blog, children }) => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
         name="description"
-        content="Tokio is a runtime for writing reliable asynchronous applications with Rust. It provides async I/O, networking, scheduling, timers, and more."
+        content="纬曜智能提供专业的MCP(Model Cloud Platform)解决方案，包括协议文档维护、MCP商店、服务托管及相关SaaS服务。"
       ></meta>
       <link rel="alternate icon" type="image/png" href="/favicon-32x32.png" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
