@@ -3,7 +3,7 @@ import React, { FC, ReactNode } from "react";
 import Head from "next/head";
 import Navigation from "./nav";
 import { Roboto } from "next/font/google";
-import Footer from './footer';
+// import Footer from './footer';
 import Seo from './Seo';
 
 // 直接从Seo组件文件中导入SeoProps接口
