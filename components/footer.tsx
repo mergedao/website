@@ -61,7 +61,7 @@ export default function Footer() {
       <div className="container">
         <div className="columns is-multiline">
           <div className="column is-4">
-            <h2 className="title is-5">纬曜智能</h2>
+            <h2 className="title is-5 has-text-white">纬曜智能</h2>
             <p className="mb-4">
               专业的MCP人工智能解决方案提供商，致力于帮助企业轻松接入和管理AI能力。
             </p>
