@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>丰台区丰草河三维立体模型</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // 初始化场景、相机和渲染器
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 设置背景为天空盒
+        const skyLoader = new THREE.TextureLoader();
+        const skyTexture = skyLoader.load('https://threejsfundamentals.org/threejs/resources/images/skybox/px.jpg');
+        scene.background = skyTexture;
+
+        // 模拟丰草河的基本数据
+        const riverWidth = 50;  // 河流宽度（米）
+        const riverDepth = 2;   // 河流深度（米）
+        const riverLength = 200; // 河流长度（米）
+
+        // 创建河流模型
+        const riverGeometry = new THREE.PlaneGeometry(riverLength, riverWidth);
+        const riverMaterial = new THREE.MeshPhongMaterial({
+            color: 0x1e90ff, // 水的颜色
+            transparent: true,
+            opacity: 0.8,
+            bumpScale: 0.1,
+            specular: new THREE.Color('grey'),
+            shininess: 5
+        });
+
+        const river = new THREE.Mesh(riverGeometry, riverMaterial);
+        river.rotation.x = -Math.PI / 2;
+        river.position.y = riverDepth / 2;
+        scene.add(river);
+
+        // 添加水面波纹纹理
+        const bumpLoader = new THREE.TextureLoader();
+        const bumpTexture = bumpLoader.load('https://threejsfundamentals.org/threejs/resources/images/waterNormals.jpg');
+        riverMaterial.bumpMap = bumpTexture;
+        riverMaterial.bumpScale = 0.1;
+
+        // 创建河流周围的地形
+        const terrainGeometry = new THREE.PlaneGeometry(400, 400);
+        const terrainMaterial = new THREE.MeshPhongMaterial({
+            color: 0x3c8f3c // 草地颜色
+        });
+        const terrain = new THREE.Mesh(terrainGeometry, terrainMaterial);
+        terrain.rotation.x = -Math.PI / 2;
+        scene.add(terrain);
+
+        // 设置光源
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(50, 50, 50);
+        scene.add(directionalLight);
+
+        // 设置相机位置
+        camera.position.set(100, 50, 150);
+        camera.lookAt(0, 0, 0);
+
+        // 添加交互功能（鼠标拖动旋转视图）
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+
+        document.addEventListener('mousedown', (e) => {
+            isDragging = true;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaMoveX = e.offsetX - previousMousePosition.x;
+                const deltaMoveY = e.offsetY - previousMousePosition.y;
+
+                camera.position.x += deltaMoveX * 0.1;
+                camera.position.y -= deltaMoveY * 0.1;
+                camera.lookAt(0, 0, 0);
+            }
+            previousMousePosition = { x: e.offsetX, y: e.offsetY };
+        });
+
+        document.addEventListener('mouseup', (e) => {
+            isDragging = false;
+        });
+
+        // 添加动画效果
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // 窗口调整时更新相机和渲染器
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
