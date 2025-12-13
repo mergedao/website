@@ -4,6 +4,8 @@ import { MetadataRoute } from "next";
  * sitemap.xml 生成
  * 帮助搜索引擎发现和索引网站的所有页面
  */
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://your-domain.com";
   const currentDate = new Date().toISOString();

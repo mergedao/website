@@ -4,6 +4,8 @@ import { MetadataRoute } from "next";
  * robots.txt 配置
  * 告诉搜索引擎爬虫哪些页面可以访问
  */
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://your-domain.com";
 
