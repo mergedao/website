@@ -1,0 +1,107 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for the ordered structure -->
+    <linearGradient id="orderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#818cf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Chaos particles gradient -->
+    <radialGradient id="chaosGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6b7280;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#374151;stop-opacity:0.2" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle (optional, for context) -->
+  <circle cx="256" cy="256" r="240" fill="#0a0a0a" stroke="#1f2937" stroke-width="2"/>
+  
+  <!-- Chaos particles (scattered, fading) - left/top area -->
+  <g opacity="0.4">
+    <circle cx="80" cy="120" r="8" fill="#4b5563"/>
+    <circle cx="140" cy="80" r="6" fill="#6b7280"/>
+    <circle cx="60" cy="200" r="5" fill="#374151"/>
+    <circle cx="120" cy="160" r="7" fill="#4b5563"/>
+    <circle cx="100" cy="260" r="4" fill="#6b7280"/>
+    <circle cx="180" cy="100" r="5" fill="#374151"/>
+    <circle cx="70" cy="320" r="6" fill="#4b5563"/>
+    <circle cx="150" cy="220" r="4" fill="#6b7280"/>
+    <circle cx="90" cy="380" r="5" fill="#374151"/>
+    <circle cx="130" cy="300" r="3" fill="#4b5563"/>
+  </g>
+  
+  <!-- Transition flow lines -->
+  <g opacity="0.3">
+    <path d="M 150 150 Q 200 200 250 230" stroke="url(#orderGradient)" stroke-width="1" fill="none" stroke-dasharray="4,4"/>
+    <path d="M 120 220 Q 180 250 240 260" stroke="url(#orderGradient)" stroke-width="1" fill="none" stroke-dasharray="4,4"/>
+    <path d="M 140 300 Q 200 290 260 280" stroke="url(#orderGradient)" stroke-width="1" fill="none" stroke-dasharray="4,4"/>
+  </g>
+  
+  <!-- Central ordered structure - Hexagonal molecular/atomic pattern -->
+  <g filter="url(#glow)">
+    <!-- Core hexagon -->
+    <polygon 
+      points="256,180 310,210 310,270 256,300 202,270 202,210" 
+      fill="none" 
+      stroke="url(#orderGradient)" 
+      stroke-width="3"
+    />
+    
+    <!-- Inner connection lines -->
+    <line x1="256" y1="180" x2="256" y2="300" stroke="url(#orderGradient)" stroke-width="2" opacity="0.5"/>
+    <line x1="202" y1="210" x2="310" y2="270" stroke="url(#orderGradient)" stroke-width="2" opacity="0.5"/>
+    <line x1="310" y1="210" x2="202" y2="270" stroke="url(#orderGradient)" stroke-width="2" opacity="0.5"/>
+    
+    <!-- Core node -->
+    <circle cx="256" cy="240" r="16" fill="url(#orderGradient)"/>
+    
+    <!-- Vertex nodes -->
+    <circle cx="256" cy="180" r="10" fill="url(#orderGradient)"/>
+    <circle cx="310" cy="210" r="10" fill="url(#orderGradient)"/>
+    <circle cx="310" cy="270" r="10" fill="url(#orderGradient)"/>
+    <circle cx="256" cy="300" r="10" fill="url(#orderGradient)"/>
+    <circle cx="202" cy="270" r="10" fill="url(#orderGradient)"/>
+    <circle cx="202" cy="210" r="10" fill="url(#orderGradient)"/>
+  </g>
+  
+  <!-- Extended structure - outer connections -->
+  <g opacity="0.6">
+    <!-- Top extension -->
+    <line x1="256" y1="180" x2="256" y2="130" stroke="url(#orderGradient)" stroke-width="2"/>
+    <circle cx="256" cy="120" r="8" fill="url(#orderGradient)"/>
+    
+    <!-- Top-right extensions -->
+    <line x1="310" y1="210" x2="350" y2="185" stroke="url(#orderGradient)" stroke-width="2"/>
+    <circle cx="358" cy="180" r="8" fill="url(#orderGradient)"/>
+    
+    <!-- Bottom-right extensions -->
+    <line x1="310" y1="270" x2="350" y2="295" stroke="url(#orderGradient)" stroke-width="2"/>
+    <circle cx="358" cy="302" r="8" fill="url(#orderGradient)"/>
+    
+    <!-- Bottom extension -->
+    <line x1="256" y1="300" x2="256" y2="350" stroke="url(#orderGradient)" stroke-width="2"/>
+    <circle cx="256" cy="360" r="8" fill="url(#orderGradient)"/>
+    
+    <!-- Bottom-left extensions -->
+    <line x1="202" y1="270" x2="162" y2="295" stroke="url(#orderGradient)" stroke-width="2"/>
+    <circle cx="154" cy="302" r="8" fill="url(#orderGradient)"/>
+    
+    <!-- Top-left extensions -->
+    <line x1="202" y1="210" x2="162" y2="185" stroke="url(#orderGradient)" stroke-width="2"/>
+    <circle cx="154" cy="180" r="8" fill="url(#orderGradient)"/>
+  </g>
+  
+  <!-- μ symbol hint (micro) - subtle -->
+  <text x="400" y="420" font-family="serif" font-size="48" fill="url(#orderGradient)" opacity="0.4">μ</text>
+</svg>
+

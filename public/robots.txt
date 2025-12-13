@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://vyagent.com/sitemap.xml 
