@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { motion } from "framer-motion";
 import { Navigation, SectionIndicator } from "@/components/navigation";
 import {
   SectionChaos,
@@ -10,7 +11,7 @@ import {
   SectionVision,
   SectionCall,
 } from "@/components/sections";
-import { useLocale } from "@/lib/context";
+import { useLocale, useTheme } from "@/lib/context";
 import { SEOContent } from "@/components/seo-content";
 
 /**
@@ -19,6 +20,7 @@ import { SEOContent } from "@/components/seo-content";
  */
 export default function Home() {
   const { locale } = useLocale();
+  const { theme } = useTheme();
   const [activeSection, setActiveSection] = useState("chaos");
 
   // Section配置 - 使用 useMemo 避免每次渲染都重新创建
@@ -113,11 +115,37 @@ export default function Home() {
 
       {/* 六个全屏Section */}
       <SectionChaos />
+      <SectionDivider theme={theme} />
       <SectionInsight />
+      <SectionDivider theme={theme} />
       <SectionProjects />
+      <SectionDivider theme={theme} />
       <SectionOrder />
+      <SectionDivider theme={theme} />
       <SectionVision />
+      <SectionDivider theme={theme} />
       <SectionCall />
     </main>
+  );
+}
+
+/**
+ * Section 分割线组件
+ */
+function SectionDivider({ theme }: { theme: 'dark' | 'light' }) {
+  return (
+    <div className={`relative w-full h-px ${
+      theme === 'dark' ? 'bg-gradient-to-r from-transparent via-white/50 to-transparent' : 'bg-gradient-to-r from-transparent via-black/50 to-transparent'
+    }`}>
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className={`h-full w-full ${
+          theme === 'dark' ? 'bg-gradient-to-r from-transparent via-white/50 to-transparent' : 'bg-gradient-to-r from-transparent via-black/50 to-transparent'
+        }`}
+      />
+    </div>
   );
 }

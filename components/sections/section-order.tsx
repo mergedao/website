@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLocale } from "../../lib/context";
+import { useLocale, useTheme } from "../../lib/context";
 import { SectionContainer, SectionDescription } from "./section-container";
 
 /**
@@ -11,10 +11,23 @@ import { SectionContainer, SectionDescription } from "./section-container";
  */
 export function SectionOrder() {
   const { content } = useLocale();
+  const { theme } = useTheme();
   const section = content.sections.order;
+  
+  // 根据主题设置文字渐变
+  const titleGradient = theme === 'dark' 
+    ? "bg-gradient-to-b from-white via-white to-white/60"
+    : "bg-gradient-to-b from-black via-black to-black/60";
+  
+  const subtitleColor = theme === 'dark'
+    ? "text-white/50"
+    : "text-black/50";
 
   return (
-    <SectionContainer id="order" className="bg-black">
+    <SectionContainer 
+      id="order" 
+      className={theme === 'dark' ? "bg-black" : "bg-white"}
+    >
       {/* 几何网格背景 - 秩序的象征 */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {/* 动态线条 */}
@@ -24,9 +37,9 @@ export function SectionOrder() {
         >
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-              <stop offset="50%" stopColor="rgba(255,255,255,0.1)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              <stop offset="0%" stopColor={theme === 'dark' ? "rgba(255,255,255,0)" : "rgba(0,0,0,0)"} />
+              <stop offset="50%" stopColor={theme === 'dark' ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"} />
+              <stop offset="100%" stopColor={theme === 'dark' ? "rgba(255,255,255,0)" : "rgba(0,0,0,0)"} />
             </linearGradient>
           </defs>
           
@@ -55,7 +68,7 @@ export function SectionOrder() {
               y1="0%"
               x2={`${(i + 1) * 8}%`}
               y2="100%"
-              stroke="rgba(255,255,255,0.03)"
+              stroke={theme === 'dark' ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"}
               strokeWidth="1"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
@@ -71,7 +84,11 @@ export function SectionOrder() {
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full bg-gradient-radial from-white/[0.05] via-transparent to-transparent blur-3xl"
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full bg-gradient-radial blur-3xl ${
+            theme === 'dark' 
+              ? 'from-white/[0.05] via-transparent to-transparent' 
+              : 'from-black/[0.05] via-transparent to-transparent'
+          }`}
         />
       </div>
 
@@ -85,7 +102,9 @@ export function SectionOrder() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="text-xs md:text-sm uppercase tracking-[0.3em] text-white/40 font-mono">
+          <span className={`text-xs md:text-sm uppercase tracking-[0.3em] font-mono ${
+            theme === 'dark' ? 'text-white/40' : 'text-black/40'
+          }`}>
             {section.badge}
           </span>
         </motion.div>
@@ -98,11 +117,11 @@ export function SectionOrder() {
           viewport={{ once: true }}
           className="text-center space-y-2"
         >
-          <h2 className="text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/60">
+          <h2 className={`text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-tight bg-clip-text text-transparent ${titleGradient}`}>
             {section.title}
           </h2>
           {section.subtitle && (
-            <p className="text-2xl md:text-3xl lg:text-4xl font-light text-white/50 tracking-wide">
+            <p className={`text-2xl md:text-3xl lg:text-4xl font-light ${subtitleColor} tracking-wide`}>
               {section.subtitle}
             </p>
           )}
@@ -114,7 +133,9 @@ export function SectionOrder() {
           whileInView={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
           viewport={{ once: true }}
-          className="w-24 md:w-32 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto"
+          className={`w-24 md:w-32 h-px bg-gradient-to-r from-transparent to-transparent mx-auto ${
+            theme === 'dark' ? 'via-white/30' : 'via-black/30'
+          }`}
         />
 
         {/* 描述 */}

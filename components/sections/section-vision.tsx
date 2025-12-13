@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Lightbulb, Zap, Sparkles } from "lucide-react";
 import { useLocale } from "../../lib/context";
 import { SectionContainer, SectionTitle, SectionDescription } from "./section-container";
 
@@ -38,10 +39,6 @@ export function SectionVision() {
             viewport={{ once: true }}
           />
         ))}
-
-        {/* 渐变光晕 */}
-        <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-black/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/50 to-transparent" />
       </div>
 
       {/* 内容 */}
@@ -78,7 +75,7 @@ export function SectionVision() {
         >
           <div className="text-center">
             <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/20 flex items-center justify-center bg-white/[0.02]">
-              <span className="text-2xl md:text-3xl">💭</span>
+              <Lightbulb className="w-8 h-8 md:w-10 md:h-10 text-white/60" />
             </div>
             <p className="text-sm md:text-base text-white/40 mt-3 font-mono">Intent</p>
           </div>
@@ -93,7 +90,7 @@ export function SectionVision() {
 
           <div className="text-center">
             <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/20 flex items-center justify-center bg-white/[0.02]">
-              <span className="text-2xl md:text-3xl">⚡</span>
+              <Zap className="w-8 h-8 md:w-10 md:h-10 text-white/60" />
             </div>
             <p className="text-sm md:text-base text-white/40 mt-3 font-mono">Transform</p>
           </div>
@@ -108,7 +105,7 @@ export function SectionVision() {
 
           <div className="text-center">
             <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/20 flex items-center justify-center bg-white/[0.02]">
-              <span className="text-2xl md:text-3xl">✨</span>
+              <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-white/60" />
             </div>
             <p className="text-sm md:text-base text-white/40 mt-3 font-mono">Reality</p>
           </div>

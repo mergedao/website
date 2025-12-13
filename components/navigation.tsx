@@ -95,8 +95,7 @@ export function Navigation({ sections = [], activeSection, onNavigate }: Navigat
                     : "text-white/60 hover:text-white hover:bg-white/10"
                 }`}
               >
-                <span className="hidden sm:inline">{getSectionTitle(section.id)}</span>
-                <span className="sm:hidden">{section.label}</span>
+                {section.label}
               </a>
             ))}
           </nav>
