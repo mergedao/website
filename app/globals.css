@@ -236,6 +236,51 @@
   background: rgba(0, 0, 0, 0.03) !important;
 }
 
+/* 亮色模式右侧导航指示器 - 确保使用黑色 */
+:root:not(.dark) .section-indicator-light .section-indicator-dot {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+:root:not(.dark) .section-indicator-light .section-indicator-dot-active {
+  background-color: #000000 !important;
+}
+
+:root:not(.dark) .section-indicator-light button:hover .section-indicator-dot {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+:root:not(.dark) .section-indicator-light .section-indicator-label {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+:root:not(.dark) .section-indicator-light .section-indicator-label-active {
+  color: #000000 !important;
+}
+
+/* 覆盖所有可能的白色变体，确保在浅色模式下强制使用黑色 */
+:root:not(.dark) .section-indicator-light button > div.bg-white,
+:root:not(.dark) .section-indicator-light button > div.bg-white\/20,
+:root:not(.dark) .section-indicator-light button > div.bg-white\/40 {
+  background-color: #000000 !important;
+}
+
+:root:not(.dark) .section-indicator-light button > div.bg-white\/20 {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+:root:not(.dark) .section-indicator-light button:hover > div.bg-white\/20 {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+:root:not(.dark) .section-indicator-light button > span.text-white,
+:root:not(.dark) .section-indicator-light button > span.text-white\/40 {
+  color: #000000 !important;
+}
+
+:root:not(.dark) .section-indicator-light button > span.text-white\/40 {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
 /* ========================================
    渐变工具类
    ======================================== */
