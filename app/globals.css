@@ -236,6 +236,24 @@
   background: rgba(0, 0, 0, 0.03) !important;
 }
 
+/* 亮色模式 header 背景 - 确保正确显示 */
+:root:not(.dark) nav.fixed[class*="backdrop-blur-md"] {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+:root:not(.dark) nav.fixed[class*="backdrop-blur-xl"] {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 暗黑模式 header 背景 - 确保正确显示 */
+.dark nav.fixed[class*="backdrop-blur-md"] {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark nav.fixed[class*="backdrop-blur-xl"] {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
 /* 亮色模式右侧导航指示器 - 确保使用黑色 */
 :root:not(.dark) .section-indicator-light .section-indicator-dot {
   background-color: rgba(0, 0, 0, 0.2) !important;
