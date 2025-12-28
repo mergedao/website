@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 // 基础 URL - 需要根据实际部署域名修改
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://your-domain.com";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://vyagent.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -101,6 +101,10 @@ export const metadata: Metadata = {
   },
   category: "Technology",
   classification: "AI, Automation, Digital Transformation",
+  other: {
+    "base:app_id": "6950ffdac63ad876c90816b6",
+    "google-adsense-account": "ca-pub-7917205969364449",
+  },
 };
 
 export default function RootLayout({

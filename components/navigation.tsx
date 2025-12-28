@@ -52,6 +52,8 @@ export function Navigation({ sections = [], activeSection, onNavigate }: Navigat
     }
   };
 
+  const isDark = theme === 'dark';
+  
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -59,8 +61,12 @@ export function Navigation({ sections = [], activeSection, onNavigate }: Navigat
       transition={{ duration: 0.6, delay: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-2.5 transition-all duration-300 ${
         scrolled
-          ? "backdrop-blur-xl bg-black/30 border-b border-white/10 shadow-lg shadow-black/5"
-          : "backdrop-blur-md bg-black/10"
+          ? isDark
+            ? "backdrop-blur-xl bg-black/30 border-b border-white/10 shadow-lg shadow-black/5"
+            : "backdrop-blur-xl bg-white/50 border-b border-black/10 shadow-lg shadow-black/5"
+          : isDark
+            ? "backdrop-blur-md bg-black/10"
+            : "backdrop-blur-md bg-white/20"
       }`}
       style={{
         WebkitBackdropFilter: scrolled ? "blur(24px) saturate(180%)" : "blur(12px) saturate(150%)",
@@ -73,7 +79,9 @@ export function Navigation({ sections = [], activeSection, onNavigate }: Navigat
           href="#chaos"
           onClick={(e) => handleNavClick(e, "chaos")}
           whileHover={{ scale: 1.02 }}
-          className="flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-200 cursor-pointer flex-shrink-0"
+          className={`flex items-center gap-2 transition-colors duration-200 cursor-pointer flex-shrink-0 ${
+            isDark ? "text-white/80 hover:text-white" : "text-black/80 hover:text-black"
+          }`}
         >
           <AnimatedLogo size={24} />
           <span className="text-xs md:text-sm font-mono tracking-wider">
@@ -91,8 +99,12 @@ export function Navigation({ sections = [], activeSection, onNavigate }: Navigat
                 onClick={(e) => handleNavClick(e, section.id)}
                 className={`px-2 md:px-3 py-1.5 text-xs md:text-sm font-mono transition-all duration-200 cursor-pointer rounded-md whitespace-nowrap ${
                   activeSection === section.id
-                    ? "text-white bg-white/15 shadow-sm"
-                    : "text-white/60 hover:text-white hover:bg-white/10"
+                    ? isDark
+                      ? "text-white bg-white/15 shadow-sm"
+                      : "text-black bg-black/15 shadow-sm"
+                    : isDark
+                      ? "text-white/60 hover:text-white hover:bg-white/10"
+                      : "text-black/60 hover:text-black hover:bg-black/10"
                 }`}
               >
                 {section.label}
@@ -106,7 +118,9 @@ export function Navigation({ sections = [], activeSection, onNavigate }: Navigat
           {/* 语言切换链接 */}
           <button
             onClick={toggleLocale}
-            className="inline-flex items-center gap-1 px-1.5 py-1 text-white/50 hover:text-white text-xs font-mono transition-colors duration-200 cursor-pointer"
+            className={`inline-flex items-center gap-1 px-1.5 py-1 text-xs font-mono transition-colors duration-200 cursor-pointer ${
+              isDark ? "text-white/50 hover:text-white" : "text-black/50 hover:text-black"
+            }`}
             aria-label="Toggle language"
           >
             <Languages className="w-3 h-3" />
@@ -115,12 +129,14 @@ export function Navigation({ sections = [], activeSection, onNavigate }: Navigat
             </span>
           </button>
 
-          <span className="text-white/20 text-xs">|</span>
+          <span className={`text-xs ${isDark ? "text-white/20" : "text-black/20"}`}>|</span>
 
           {/* 主题切换链接 */}
           <button
             onClick={toggleTheme}
-            className="inline-flex items-center justify-center p-1 text-white/50 hover:text-white text-xs transition-colors duration-200 cursor-pointer"
+            className={`inline-flex items-center justify-center p-1 text-xs transition-colors duration-200 cursor-pointer ${
+              isDark ? "text-white/50 hover:text-white" : "text-black/50 hover:text-black"
+            }`}
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
@@ -142,12 +158,17 @@ interface SectionIndicatorProps {
 }
 
 export function SectionIndicator({ sections, activeSection, onNavigate }: SectionIndicatorProps) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: 0.8 }}
-      className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3"
+      className={`fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3 ${
+        isDark ? '' : 'section-indicator-light'
+      }`}
     >
       {sections.map((section) => {
         return (
@@ -160,13 +181,19 @@ export function SectionIndicator({ sections, activeSection, onNavigate }: Sectio
             <motion.div
               className={`w-2 h-2 rounded-full transition-all ${
                 activeSection === section.id
-                  ? 'bg-white scale-125'
-                  : 'bg-white/20 group-hover:bg-white/40'
+                  ? isDark
+                    ? 'bg-white scale-125'
+                    : 'bg-black scale-125 section-indicator-dot-active'
+                  : isDark
+                    ? 'bg-white/20 group-hover:bg-white/40'
+                    : 'bg-black/20 group-hover:bg-black/40 section-indicator-dot'
               }`}
             />
             <span
               className={`text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity ${
-                activeSection === section.id ? 'text-white' : 'text-white/40'
+                activeSection === section.id
+                  ? isDark ? 'text-white' : 'text-black section-indicator-label-active'
+                  : isDark ? 'text-white/40' : 'text-black/40 section-indicator-label'
               }`}
             >
               {section.label}
